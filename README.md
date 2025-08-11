@@ -1,6 +1,6 @@
 <div align="center">
 
-# STEVE — Offline RAG Chat for Windows
+# Offline RAG Chat for Windows
 
 Electron UI + Python FastAPI backend. Fully offline installer. Local docs in, answers out.
 
@@ -8,19 +8,19 @@ Electron UI + Python FastAPI backend. Fully offline installer. Local docs in, an
 
 ## Download
 
-- Grab the latest “STEVE-<version>-Setup.exe” from GitHub Releases.
+- Grab the latest installer (.exe) from GitHub Releases.
 - Works on Windows 10/11 (x64). No Node.js or Python required for end users.
 
 ## What’s inside
 
 - Electron app (unpacked, asar disabled) — easy to inspect and tweak after install
 - Packaged FastAPI backend (PyInstaller onedir) with all Python deps
-- SQLite database for knowledge base at `install_dir/resources/backend/steve-backend/data/knowledge.db`
+- SQLite database for knowledge base lives under the app's resources backend data folder (inside `install_dir/resources/backend/.../data/knowledge.db`).
 
 ## Install and run
 
 1) Run the installer and choose an install directory (assisted installer).
-2) Launch “STEVE” from the Start menu or the desktop shortcut.
+2) Launch the app from the Start menu or the desktop shortcut.
 3) Optional for fully-offline AI: start a local LLM server (e.g., LM Studio) and set the Base URL, API key, and models in Settings.
 
 Notes
@@ -48,7 +48,7 @@ Build steps (PowerShell):
 scripts\make-installer.ps1 -Clean
 ```
 
-The installer will be written to: `electron\dist\STEVE-<version>-Setup.exe`
+The installer will be written to: `electron\dist\*.exe`
 
 ## Development (optional)
 

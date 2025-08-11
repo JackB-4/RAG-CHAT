@@ -5,7 +5,7 @@ Param(
 $ErrorActionPreference = 'Stop'
 Set-Location -Path $PSScriptRoot
 
-Write-Host 'Building STEVE backend (PyInstaller, onedir)'
+Write-Host 'Building backend (PyInstaller, onedir)'
 
 # Ensure a local virtual environment to avoid polluting global Python
 $venvPath = Join-Path $PSScriptRoot '.venv'
