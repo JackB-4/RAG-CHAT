@@ -415,6 +415,10 @@ function renderChat() {
         <div class="card vstack">
           <div id="chat-box" class="chat-box vstack"></div>
           <div class="hstack" style="align-items:flex-end;">
+            <label class="vstack" style="gap:4px; align-items:flex-start;">
+              <span class="text-dim" style="font-size:11px;">Model</span>
+              <select id="chat-model-picker" class="input" style="width:160px;"></select>
+            </label>
             <textarea id="chat-input" class="textarea" placeholder="Ask anything..."></textarea>
             <div class="vstack" style="gap:8px; align-items: flex-end;">
               <label class="vstack" style="gap:4px; align-items:flex-end;">
