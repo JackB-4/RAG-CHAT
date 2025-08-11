@@ -4,6 +4,16 @@ on:
   workflow_dispatch: {}
   push:
     tags: ['v*']
+    paths:
+      - 'backend/**'
+      - 'electron/**'
+      - 'shared/**'
+      - 'requirements.txt'
+      - 'electron/package.json'
+      - 'electron/main.js'
+      - 'electron/preload.js'
+      - 'electron/renderer/**'
+      - 'scripts/**'
 
 permissions:
   contents: write  # required to create releases and upload assets
