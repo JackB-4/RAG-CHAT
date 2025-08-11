@@ -5,7 +5,47 @@ from contextlib import contextmanager
 from .config import settings
 
 # Ensure the data directory exists in the user profile location
-os.makedirs(os.path.dirname(os.path.abspath(settings.db_path)), exist_ok=True)
+import logging
+
+# Ensure the data directory exists in the user profile location
+try:
+    os.makedirs(os.path.dirname(os.path.abspath(settings.db_path)), exist_ok=True)
+except Exception as e:
+    logging.error(f"Failed to create DB directory: {e}")
+
+# Ensure the DB file exists and is initialized
+def ensure_db():
+    try:
+        with get_conn() as conn:
+            conn.executescript(SCHEMA_SQL)
+            # Lightweight migrations for existing DBs: add columns if missing
+            try:
+                cols = {r[1] for r in conn.execute("PRAGMA table_info(embedding)").fetchall()}
+                if "model" not in cols:
+                    conn.execute("ALTER TABLE embedding ADD COLUMN model TEXT")
+                if "dim" not in cols:
+                    conn.execute("ALTER TABLE embedding ADD COLUMN dim INTEGER")
+                if "is_normalized" not in cols:
+                    conn.execute("ALTER TABLE embedding ADD COLUMN is_normalized INTEGER NOT NULL DEFAULT 0")
+            except Exception:
+                pass
+            # Ensure indexes exist (idempotent in SQLite with IF NOT EXISTS above)
+            # Backfill chunk_fts from existing embeddings if empty
+            try:
+                cnt = conn.execute("SELECT COUNT(*) AS c FROM chunk_fts").fetchone()["c"]
+                if cnt == 0:
+                    rows = conn.execute("SELECT document_id, chunk_index, text FROM embedding").fetchall()
+                    for r in rows:
+                        conn.execute(
+                            "INSERT INTO chunk_fts(content, document_id, chunk_index) VALUES(?,?,?)",
+                            (r["text"], r["document_id"], r["chunk_index"]),
+                        )
+            except Exception:
+                pass
+    except Exception as e:
+        logging.error(f"Failed to initialize DB: {e}")
+
+ensure_db()
 
 SCHEMA_SQL = """
 PRAGMA journal_mode=WAL;
