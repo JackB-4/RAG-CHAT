@@ -28,8 +28,8 @@
       "runAfterFinish": true
     },
     "win": {
-      "target": ["nsis"],
-      "artifactName": "STEVE-${version}-Setup.${ext}",
+  "target": ["nsis", "zip"],
+  "artifactName": "STEVE-${version}-${ext}",
   "compression": "maximum",
   "signAndEditExecutable": false,
       "icon": "assets/robot_18310819.png"
