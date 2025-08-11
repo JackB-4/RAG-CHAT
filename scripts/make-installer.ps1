@@ -73,7 +73,7 @@ try {
 # Locate resulting installer
 $pkgJson = Get-Content -Raw (Join-Path $root 'electron\package.json') | ConvertFrom-Json
 $version = $pkgJson.version
-$glob    = Join-Path $root "electron\dist\*-Setup.*"
+$glob    = Join-Path $root "electron\dist\*.exe"
 $installer = Get-ChildItem $glob -ErrorAction SilentlyContinue | Select-Object -First 1
 if ($installer) {
   Write-Host "==> Success. Offline installer created:" -ForegroundColor Green

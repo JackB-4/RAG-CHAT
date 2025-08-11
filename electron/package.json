@@ -29,7 +29,7 @@
     },
     "win": {
   "target": ["nsis", "zip"],
-  "artifactName": "STEVE-${version}-${ext}",
+  "artifactName": "STEVE-${version}.${ext}",
   "compression": "maximum",
   "signAndEditExecutable": false,
       "icon": "assets/robot_18310819.png"
