@@ -4,6 +4,7 @@ from contextlib import contextmanager
 
 from .config import settings
 
+# Ensure the data directory exists in the user profile location
 os.makedirs(os.path.dirname(os.path.abspath(settings.db_path)), exist_ok=True)
 
 SCHEMA_SQL = """

@@ -4,7 +4,8 @@ from pydantic import BaseModel
 class Settings(BaseModel):
     # Paths
     base_dir: str = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    data_dir: str = os.path.join(base_dir, "data")
+    # Default data directory in user-writable AppData\Local to avoid shipping personal data
+    data_dir: str = os.path.join(os.getenv("LOCALAPPDATA", os.path.expanduser("~")), "RAG-CHAT", "data")
     db_path: str = os.path.join(data_dir, "knowledge.db")
 
     # LM Studio / OpenAI-compatible endpoints

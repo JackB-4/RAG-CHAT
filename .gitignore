@@ -1,4 +1,31 @@
-# Python
+# Build artifacts
+electron/dist/
+electron/out/
+backend/build/
+backend/dist/
+
+# Local Python envs
+backend/.venv/
+
+# Local data (personal knowledge base)
+backend/data/
+backend/steve/data/
+backend/steve/*.db
+backend/steve/**/*.db
+
+# Node
+**/node_modules/
+
+# OS clutter
+Thumbs.db
+*.log
+*.tmp
+.DS_Store
+
+# Python cache
+**/__pycache__/
+*.py[cod]
+*$py.class# Python
 backend/.venv/
 backend/__pycache__/
 backend/build/

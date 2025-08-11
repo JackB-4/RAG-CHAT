@@ -38,7 +38,6 @@ if (Test-Path dist)  { Remove-Item -Recurse -Force dist }
   --clean `
   --onedir `
   --name steve-backend `
-  --add-data "data;data" `
   app.py
 
 Write-Host 'Backend build complete -> backend/dist/steve-backend'
