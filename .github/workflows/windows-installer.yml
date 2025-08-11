@@ -5,6 +5,9 @@ on:
   push:
     tags: ['v*']
 
+permissions:
+  contents: write  # required to create releases and upload assets
+
 jobs:
   build:
     runs-on: windows-latest
@@ -36,3 +39,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: electron/dist/*.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
