@@ -15,7 +15,7 @@ Electron UI + Python FastAPI backend. Fully offline installer. Local docs in, an
 
 - Electron app (unpacked, asar disabled) — easy to inspect and tweak after install
 - Packaged FastAPI backend (PyInstaller onedir) with all Python deps
-- SQLite database for knowledge base lives under the app's resources backend data folder (inside `install_dir/resources/backend/.../data/knowledge.db`).
+- SQLite knowledge base database is stored in your user profile at `%LocalAppData%\RAG-CHAT\data\knowledge.db` (created on first run). This keeps personal data out of the app install folder and out of source control.
 
 ## Install and run
 
@@ -76,6 +76,10 @@ The installer will be written to: `electron\dist\*.exe`
 ## Privacy
 
 - Everything runs locally. Your documents stay on your machine.
+
+### Sensitive data & repository history
+
+If you previously committed a local database or documents, see `docs/clean-history.md` for how to purge them from Git history.
 
 ---
 
