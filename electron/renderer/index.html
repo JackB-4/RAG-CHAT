@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self'; connect-src 'self' data: blob: http://127.0.0.1:8000 http://localhost:8000;" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STEVE RAG</title>
+  <link rel="icon" type="image/png" href="../assets/robot_18310819.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <aside class="sidebar" style="-webkit-app-region: drag; padding-top: 10px;">
+      <button id="sidebar-toggle" class="sidebar-toggle" title="Collapse sidebar" aria-label="Collapse sidebar">
+        <span class="icon" aria-hidden>❮</span>
+      </button>
+  <div class="logo"><img class="logo-img" src="../assets/robot_18310819.png" alt="STEVE"/><span>STEVE</span></div>
+      <nav class="nav">
+        <button class="nav-btn active" data-view="home">
+          <span class="nav-ico" aria-hidden>🏠</span>
+          <span class="nav-label">Home</span>
+        </button>
+        <button class="nav-btn" data-view="chat">
+          <span class="nav-ico" aria-hidden>💬</span>
+          <span class="nav-label">Chat</span>
+        </button>
+        <button class="nav-btn" data-view="lookup">
+          <span class="nav-ico" aria-hidden>🔎</span>
+          <span class="nav-label">Lookup</span>
+        </button>
+        <button class="nav-btn" data-view="kb">
+          <span class="nav-ico" aria-hidden>📚</span>
+          <span class="nav-label">Knowledgebases</span>
+        </button>
+        <button class="nav-btn" data-view="settings">
+          <span class="nav-ico" aria-hidden>⚙️</span>
+          <span class="nav-label">Settings</span>
+        </button>
+      </nav>
+    </aside>
+  <main class="content">
+  <section id="view-home" class="view visible"></section>
+      <section id="view-chat" class="view"></section>
+      <section id="view-lookup" class="view"></section>
+      <section id="view-kb" class="view"></section>
+      <section id="view-settings" class="view"></section>
+    </main>
+  </div>
+  <!-- Lottie player (offline, local) -->
+  <script src="../node_modules/lottie-web/build/player/lottie.min.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>

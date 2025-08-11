@@ -1,0 +1,43 @@
+# Python
+backend/.venv/
+backend/__pycache__/
+backend/build/
+backend/dist/
+
+# Node/Electron
+electron/node_modules/
+electron/dist/
+
+# Misc
+*.log
+.DS_Store
+# Node
+node_modules/
+.dist/
+dist/
+.build/
+
+# Python
+.env/
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.spec
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Build outputs
+backend/dist/
+release/
+
+# IDE
+.vscode/

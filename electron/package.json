@@ -1,0 +1,52 @@
+{
+  "name": "steve-rag",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Offline Electron + FastAPI RAG chat app",
+  "author": "STEVE",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "prepack": "powershell -ExecutionPolicy Bypass -File ../backend/build-backend.ps1",
+    "pack": "electron-builder --dir",
+    "predist": "powershell -ExecutionPolicy Bypass -File ../backend/build-backend.ps1",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.steve.rag",
+    "asar": false,
+    "productName": "STEVE",
+    "nsis": {
+  "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "STEVE",
+      "deleteAppDataOnUninstall": false,
+      "runAfterFinish": true
+    },
+    "win": {
+      "target": ["nsis"],
+      "artifactName": "STEVE-${version}-Setup.${ext}",
+  "compression": "maximum",
+  "signAndEditExecutable": false,
+      "icon": "assets/robot_18310819.png"
+    },
+    "extraResources": [
+      { "from": "../backend/dist/steve-backend", "to": "backend/steve-backend" }
+    ],
+    "files": [
+      "**/*",
+      "!node_modules/.cache/**"
+    ]
+  },
+  "devDependencies": {
+    "electron": "29.4.0",
+    "electron-builder": "24.13.3"
+  },
+  "dependencies": {
+    "lottie-web": "^5.12.2"
+  }
+}
